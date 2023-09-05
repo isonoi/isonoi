@@ -4,7 +4,7 @@
 #'
 #' @param x An sf object the convex hull of which will determine the hex grid
 #' @param resolution The resolution of the hex grid
-#' @return An sf object
+#' @return An sfc object
 #' @export
 #' @examples
 #' x = net_oldenburg_raw
