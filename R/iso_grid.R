@@ -8,6 +8,9 @@
 #' Note: default value of 9 represents around 0.1 km^2, you may way to consider
 #' higher values (e.g. 10, which is around 0.015 km^2 or 15k m^2) for more detailed
 #' analysis or lower values for larger areas.
+#' 
+#' @note This function is a wrapper for `h3o::sfc_to_cells` and `h3o::flatten_h3`.
+#' It assumes that the input object has a geographic (lon/lat) coordinate system, e.g. EPSG:4326.
 #'
 #' @param x An sf object the convex hull of which will determine the hex grid
 #' @param resolution The resolution of the hex grid
