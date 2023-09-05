@@ -22,5 +22,6 @@ hex_flat = h3o::flatten_h3(hex)
 hex_sfc = sf::st_as_sfc(hex_flat)
 plot(hex_grid)
 plot(hex_grid_smaller, add = TRUE, col = "red")
-plot(hex_sfc, add = TRUE, col = "red")
+plot(hex_sfc, add = TRUE, col = "yellow")
+plot(net_oldenburg_raw, add = TRUE, col = "black")
 
