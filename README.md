@@ -22,7 +22,10 @@ remotes::install_github("isonoi/isonoi")
 ```
 
 ``` r
-library(isonoi)
+# TODO: remove this and keep only library call
+devtools::load_all()
+#> ℹ Loading isonoi
+# library(isonoi)
 library(sf)
 #> Linking to GEOS 3.11.1, GDAL 3.6.4, PROJ 9.1.1; sf_use_s2() is TRUE
 x = net_oldenburg_raw

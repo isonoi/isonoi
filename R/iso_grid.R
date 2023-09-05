@@ -27,6 +27,33 @@ iso_grid = function(x, resolution = 9) {
   hex_sfc
 }
 
+# Commented code that will be generalised in iso_vnoi:
+# points_projected = st_transform(points, local_crs)
+# poly_projected = st_transform(poly, local_crs)
+# voronoi_projected = st_voronoi(st_union(points_projected), poly_projected$geometry)
+# voronoi_projected_polygons = st_collection_extract(voronoi_projected, type = "POLYGON")
+# But with sf:: before the st_* functions
+
+#' Generate voronoi polygons from a bounding box and points
+#' 
+#' @param points An sf object of points
+#' @param poly A polygon object
+#' @return An sf object of voronoi polygons
+#' @export
+#' @examples
+#' points = points_oldenburg
+#' poly = sf::st_convex_hull(sf::st_union(net_oldenburg_raw))
+#' nvoi = iso_vnoi(points, poly)
+#' plot(nvoi)
+#' plot(points, add = TRUE)
+iso_vnoi = function(points, poly) {
+  voronoi_collection = sf::st_voronoi(sf::st_union(points), poly)
+  voronoi_polygons = sf::st_collection_extract(voronoi_collection, type = "POLYGON")
+  voronoi = sf::st_join(sf::st_as_sf(voronoi_polygons), points)
+  voronoi_clipped = sf::st_intersection(voronoi, poly)
+  voronoi_clipped
+}
+
 #' Calculate voronoi-style polygons based on grid with Euclidean distances
 #' 
 #' @note The function groups by the first column in the points object which should be unique (e.g. OSM ID).

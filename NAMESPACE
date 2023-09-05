@@ -2,3 +2,4 @@
 
 export(iso_grid)
 export(iso_vgrid)
+export(iso_vnoi)
