@@ -11,6 +11,10 @@
 The goal of isonoi is to provide example data and functions to
 demonstrate the concept of ‘iso voronoi’ polygons.
 
+It is designed to be a prototype implementation of ideas outlined and
+demonstrated with example data and reproducible code in
+<https://github.com/isonoi/streetvoronoi>
+
 Give it a spin with the reproducible examples shown below.
 
 ``` r
