@@ -15,9 +15,12 @@ Depends:
     R (>= 2.10)
 LazyData: true
 Imports: 
-    sf
+    sf,
+    h3o
 Suggests: 
     knitr,
     rmarkdown
+Remotes: 
+    josiahparry/h3o
 VignetteBuilder: knitr
 URL: https://streetvoronoi.github.io/isonoi/
