@@ -16,7 +16,9 @@ Depends:
 LazyData: true
 Imports: 
     sf,
-    h3o
+    h3o,
+    nngeo,
+    dplyr
 Suggests: 
     knitr,
     rmarkdown
