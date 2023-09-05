@@ -9,7 +9,7 @@ Authors@R: c(
   )
 Description: The goal is to provide example data and functions to demonstrate the concept of 'iso voronoi' polygons.
 License: MIT + file LICENSE
-URL: https://streetvoronoi.github.io/isonoi/
+URL: https://isonoi.github.io/isonoi/
 Depends: 
     R (>= 2.10)
 Imports: 

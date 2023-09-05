@@ -5,7 +5,7 @@
 
 <!-- badges: start -->
 
-[![R-CMD-check](https://github.com/streetvoronoi/isonoi/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/streetvoronoi/isonoi/actions/workflows/R-CMD-check.yaml)
+[![R-CMD-check](https://github.com/isonoi/isonoi/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/isonoi/isonoi/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
 The goal of isonoi is to provide example data and functions to
@@ -13,7 +13,7 @@ demonstrate the concept of ‘iso voronoi’ polygons.
 
 It is designed to be a prototype implementation of ideas outlined and
 demonstrated with example data and reproducible code in
-<https://github.com/isonoi/streetvoronoi>
+<https://github.com/isonoi/isonoi>
 
 Give it a spin with the reproducible examples shown below.
 
