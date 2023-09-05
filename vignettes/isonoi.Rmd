@@ -1,0 +1,26 @@
+---
+title: "'Voronoi-style iso polygons: an introduction"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{isonoi}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(isonoi)
+library(sf)
+```
+
+```{r}
+plot(net_oldenburg_raw$geometry)
+plot(points_oldenburg$geometry, col = "red", add = TRUE, pch = 18)
+```
+
