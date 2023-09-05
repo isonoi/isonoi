@@ -53,14 +53,19 @@ library(tmap)
 #> package maintainers should consider adding sf to Suggests:.
 #> The sp package is now running under evolution status 2
 #>      (status 2 uses the sf package in place of rgdal)
-# m1 = iso_voronoi(x) # TODO
+poly = sf::st_convex_hull(sf::st_union(x))
+vnoi = iso_vnoi(points, poly) # TODO
+#> Warning in st_voronoi.sfc(sf::st_union(points), poly): st_voronoi does not
+#> correctly triangulate longitude/latitude data
+#> Warning: attribute variables are assumed to be spatially constant throughout
+#> all geometries
 vgrid = iso_vgrid(points, grid)
 #> lon-lat points
 #> Warning: st_centroid assumes attributes are constant over geometries
-# plot(vgrid[19, ])
+m1 = tm_shape(vnoi) + tm_fill("name")
 m2 = tm_shape(vgrid) + tm_fill("name")
 # m3 = iso_osrm(x) # TODO
-tmap_arrange(m2, m2, m2, nrow = 1)
+tmap_arrange(m1, m2, m2, nrow = 1)
 #> Some legend labels were too wide. These labels have been resized to 0.24, 0.62, 0.29. Increase legend.width (argument of tm_layout) to make the legend wider and therefore the labels larger.
 #> Some legend labels were too wide. These labels have been resized to 0.24, 0.62, 0.29. Increase legend.width (argument of tm_layout) to make the legend wider and therefore the labels larger.
 #> Some legend labels were too wide. These labels have been resized to 0.24, 0.62, 0.29. Increase legend.width (argument of tm_layout) to make the legend wider and therefore the labels larger.
