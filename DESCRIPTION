@@ -1,28 +1,30 @@
 Package: isonoi
-Title: What the Package Does (One Line, Title Case)
+Title: Generate 'Voronoi-esque' Polygons from Travel Isochrones
 Version: 0.0.0.9000
-Authors@R: 
-   c(person("Robin", "Lovelace", , "first.last@example.com", role = c("cre"),
+Authors@R: c(
+    person("Robin", "Lovelace", , "first.last@example.com", role = "cre",
            comment = c(ORCID = "YOUR-ORCID-ID")),
-   person("Bernhard", "Dannemann", , "first.last@example.com", role = c("aut"),
-   	   comment = c(ORCID = "YOUR-ORCID-ID")))
+    person("Bernhard", "Dannemann", , "first.last@example.com", role = "aut",
+           comment = c(ORCID = "YOUR-ORCID-ID"))
+  )
 Description: What the package does (one paragraph).
 License: MIT + file LICENSE
-Encoding: UTF-8
-Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.2.3
+URL: https://streetvoronoi.github.io/isonoi/
 Depends: 
     R (>= 2.10)
-LazyData: true
 Imports: 
-    sf,
+    dplyr,
     h3o,
     nngeo,
-    dplyr
+    sf
 Suggests: 
     knitr,
     rmarkdown
+VignetteBuilder: 
+    knitr
 Remotes: 
     josiahparry/h3o
-VignetteBuilder: knitr
-URL: https://streetvoronoi.github.io/isonoi/
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.2.3
