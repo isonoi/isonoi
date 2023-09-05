@@ -27,40 +27,6 @@ iso_grid = function(x, resolution = 9) {
   hex_sfc
 }
 
-# # example code for the function, to be packaged:
-
-# ```{r}
-# hex_grid = stplanr::geo_projected(
-#   voronoi,
-#   st_make_grid,
-#   cellsize = 200,
-#   square = FALSE
-# )
-# hex_grid = hex_grid[poly]
-# tm_shape(hex_grid) + tm_polygons() +
-#   tm_shape(points) + tm_dots(col = "red", size = 0.8)
-# ```
-
-# We'll iterate over every hex cell to find the nearest pub, first using nearest distances:
-
-# ```{r}
-# hex_df = data.frame(name = NA)
-# hex_centroids = st_as_sf(st_centroid(hex_grid))
-# nearest_points = st_join(hex_centroids, points, join = nngeo::st_nn, k = 1, progress = FALSE)
-# hex_joined = st_sf(
-#   st_drop_geometry(nearest_points),
-#   geometry = hex_grid
-# )
-# hex_joined_centroids = st_centroid(hex_joined)
-# voronoi_hex = hex_joined |>
-#   group_by(name) |>
-#   summarise(n = n())
-# tm_shape(voronoi_hex, bb = st_bbox(voronoi)) + tm_polygons(col = "name") +
-#   tm_shape(points) + tm_dots(col = "red", size = 0.8) +
-#   tm_shape(voronoi) + tm_borders(col = "blue", lwd = 5) +
-#   tm_layout(legend.outside = TRUE)
-# ```
-
 #' Calculate voronoi-style polygons based on grid with Euclidean distances
 #' 
 #' @note The function groups by the first column in the points object which should be unique (e.g. OSM ID).
