@@ -4,15 +4,18 @@
 \alias{iso_grid}
 \title{Create hexagonal grid}
 \usage{
-iso_grid(x, ...)
+iso_grid(x, resolution = 9)
 }
 \arguments{
 \item{x}{An sf object the convex hull of which will determine the hex grid}
 
-\item{...}{Extra arguments passed to the grid generator (TBC)}
+\item{resolution}{The resolution of the hex grid}
+}
+\value{
+An sf object
 }
 \description{
-Create hexagonal grid
+Create a hexagonal grid from an sf object
 }
 \examples{
 x = net_oldenburg_raw
