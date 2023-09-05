@@ -28,7 +28,9 @@ remotes::install_github("isonoi/isonoi")
 ```
 
 ```{r inputs}
-library(isonoi)
+# TODO: remove this and keep only library call
+devtools::load_all()
+# library(isonoi)
 library(sf)
 x = net_oldenburg_raw
 points = points_oldenburg
@@ -42,7 +44,7 @@ The 3 figures below show outputs from the packages next to the standard voronoi 
 
 ```{r outputs}
 library(tmap)
-# m1 = iso_voronoi(x) # TODO
+vnoi = iso_vnoi(x) # TODO
 vgrid = iso_vgrid(points, grid)
 # plot(vgrid[19, ])
 m2 = tm_shape(vgrid) + tm_fill("name")

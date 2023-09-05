@@ -47,16 +47,11 @@ iso_grid = function(x, resolution = 9) {
 #' plot(nvoi)
 #' plot(points, add = TRUE)
 iso_vnoi = function(points, poly) {
-  browser()
-  points_projected = sf::st_transform(points, sf::st_crs(poly))
-  poly_projected = sf::st_transform(poly, sf::st_crs(points))
-  voronoi_projected = sf::st_voronoi(sf::st_union(points_projected), poly_projected$geometry)
-  voronoi_projected_polygons = sf::st_collection_extract(voronoi_projected, type = "POLYGON")
-  voronoi_projected_polygons_sf = sf::st_sf(
-    sf::st_drop_geometry(points_projected),
-    geometry = voronoi_projected_polygons
-  )
-  voronoi_projected_polygons_sf
+  voronoi_collection = sf::st_voronoi(sf::st_union(points), poly)
+  voronoi_polygons = sf::st_collection_extract(voronoi_collection, type = "POLYGON")
+  voronoi = sf::st_join(sf::st_as_sf(voronoi_polygons), points)
+  voronoi_clipped = sf::st_intersection(voronoi, poly)
+  voronoi_clipped
 }
 
 #' Calculate voronoi-style polygons based on grid with Euclidean distances
