@@ -31,8 +31,22 @@ remotes::install_github("isonoi/isonoi")
 library(isonoi)
 library(sf)
 x = net_oldenburg_raw
-hex = iso_grid(x)
-plot(hex)
-plot(x, add = TRUE)
+points = points_oldenburg
+grid = iso_grid(x)
+plot(grid, border = "grey")
+plot(sf::st_geometry(x), add = TRUE)
+plot(points, col = "red", add = TRUE, pch = 18, cex = 2)
+```
+
+The 3 figures below show outputs from the packages next to the standard voronoi diagram.
+
+```{r outputs}
+library(tmap)
+# m1 = iso_voronoi(x) # TODO
+vgrid = iso_vgrid(points, grid)
+# plot(vgrid[19, ])
+m2 = tm_shape(vgrid) + tm_fill("name")
+# m3 = iso_osrm(x) # TODO
+tmap_arrange(m2, m2, m2, nrow = 1)
 ```
 
