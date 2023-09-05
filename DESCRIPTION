@@ -7,7 +7,7 @@ Authors@R: c(
     person("Bernhard", "Dannemann", , "first.last@example.com", role = "aut",
            comment = c(ORCID = "YOUR-ORCID-ID"))
   )
-Description: What the package does (one paragraph).
+Description: The goal is to provide example data and functions to demonstrate the concept of 'iso voronoi' polygons.
 License: MIT + file LICENSE
 URL: https://streetvoronoi.github.io/isonoi/
 Depends: 
