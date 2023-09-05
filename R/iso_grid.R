@@ -10,8 +10,8 @@
 #' analysis or lower values for larger areas.
 #'
 #' @param x An sf object the convex hull of which will determine the hex grid
-#' @param resolution The resolution of the hex grid, 9 by default
-#' @return An sf object
+#' @param resolution The resolution of the hex grid
+#' @return An sfc object
 #' @export
 #' @examples
 #' x = net_oldenburg_raw
