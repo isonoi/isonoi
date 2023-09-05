@@ -6,7 +6,6 @@
 #' @examples
 #' x = net_oldenburg_raw
 #' iso_grid(x)
-iso_grid = function(x) {
-  browser()
+iso_grid = function(x, ...) {
   sf::st_convex_hull(sf::st_union(x))
 }

@@ -4,7 +4,7 @@
 \alias{iso_grid}
 \title{Create hexagonal grid}
 \usage{
-iso_grid(x)
+iso_grid(x, ...)
 }
 \arguments{
 \item{x}{An sf object the convex hull of which will determine the hex grid}
@@ -15,5 +15,6 @@ iso_grid(x)
 Create hexagonal grid
 }
 \examples{
-iso_grid(net_oldenburg_raw)
+x = net_oldenburg_raw
+iso_grid(x)
 }
