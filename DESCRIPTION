@@ -18,3 +18,4 @@ Suggests:
     knitr,
     rmarkdown
 VignetteBuilder: knitr
+URL: https://streetvoronoi.github.io/isonoi/
