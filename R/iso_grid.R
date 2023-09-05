@@ -26,3 +26,7 @@ iso_grid = function(x, resolution = 9) {
   hex_sfc = sf::st_as_sfc(hex_flat)
   hex_sfc
 }
+
+#' Calculate voronoi-style polygons based on network distance/time with sfnetworks
+#' 
+#' @param x An sfnetworks object
