@@ -19,3 +19,18 @@ knitr::opts_chunk$set(
 
 The goal of isonoi is to provide example data and functions to demonstrate the concept of 'iso voronoi' polygons.
 
+Give it a spin with the reproducible examples shown below.
+
+```{r, eval=FALSE}
+remotes::install_github("isonoi/isonoi")
+```
+
+```{r inputs}
+library(isonoi)
+library(sf)
+x = net_oldenburg_raw
+hex = iso_grid(x)
+plot(hex)
+plot(x, add = TRUE)
+```
+
