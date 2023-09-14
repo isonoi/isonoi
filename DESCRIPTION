@@ -4,8 +4,8 @@ Version: 0.0.0.9000
 Authors@R: c(
     person("Robin", "Lovelace", , "first.last@example.com", role = "cre",
            comment = c(ORCID = "YOUR-ORCID-ID")),
-    person("Bernhard", "Dannemann", , "first.last@example.com", role = "aut",
-           comment = c(ORCID = "YOUR-ORCID-ID"))
+    person("Bernhard", "Dannemann", , "bernhard.dannemann@uol.de", role = "aut",
+           comment = c(ORCID = "0000-0002-3775-8216"))
   )
 Description: The goal is to provide example data and functions to demonstrate the concept of 'iso voronoi' polygons.
 License: MIT + file LICENSE
@@ -17,7 +17,10 @@ Imports:
     dplyr,
     h3o (>= 0.2.2),
     nngeo,
-    sf
+    sf,
+    osrm,
+    tibble,
+    rlang
 Suggests: 
     knitr,
     rmarkdown

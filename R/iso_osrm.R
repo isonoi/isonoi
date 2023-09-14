@@ -8,15 +8,20 @@
 #' @param x An sf object of a grid
 #' @param points An sf object of points
 #' @param measure passed on to osrm::osrmTable, can be either "duration" (minutes) or "distance" (meters)
+#' @param osrm.server the base URL of the routing server (end with "/")
+#' @param osrm.profile the routing profile to use
 #'
 #' @return An sf object of a grid, where column 'index_min' gives the index of the input point, for which the measure is minimal
+#' @importFrom  rlang .data
 #' @export
 #'
 #' @examples
 #' points = points_oldenburg
 #' x = sf::st_as_sf(iso_grid(net_oldenburg_raw, resolution = 10))
-#' grid = iso_osrm(x, points, measure = "duration", osrm.server = "http://0.0.0.0:5000/", osrm.profile = "car")
-#' plot(grid)
+#' options(osrm.server = "http://0.0.0.0:5000/")
+#' options(osrm.profile = "car")
+#' #grid = isonoi::iso_osrm(x, points, measure = "duration")
+#' #plot(grid)
 iso_osrm <- function(x,
                      points,
                      measure = "duration",
@@ -44,10 +49,14 @@ iso_osrm <- function(x,
     tibble::as_tibble(.name_repair = "unique") |>
     dplyr::rowwise() |>
     dplyr::mutate(
-      index_min = which.min(dplyr::c_across(everything()))
+      index_min = which.min(dplyr::c_across(dplyr::everything())),
+      osrm_measure = measure,
+      osrm_profile = osrm.profile
     )
 
-  result <- dplyr::bind_cols(x, matrix |>
-                               dplyr::select(index_min))
-  result
+  x <- dplyr::bind_cols(x, matrix |>
+                               dplyr::select(index_min,
+                                             osrm_measure,
+                                             osrm_profile))
+  x
 }
