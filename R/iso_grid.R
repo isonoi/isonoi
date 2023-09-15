@@ -1,14 +1,14 @@
 #' Create hexagonal grid
-#' 
+#'
 #' Create a hexagonal grid from an sf object.
-#' 
+#'
 #' See the documentation of the upstream
 #' [`h3`](https://h3geo.org/docs/core-library/restable/#average-area-in-km2)
 #' library for more information.
 #' Note: default value of 9 represents around 0.1 km^2, you may way to consider
 #' higher values (e.g. 10, which is around 0.015 km^2 or 15k m^2) for more detailed
 #' analysis or lower values for larger areas.
-#' 
+#'
 #' @note This function is a wrapper for `h3o::sfc_to_cells` and `h3o::flatten_h3`.
 #' It assumes that the input object has a geographic (lon/lat) coordinate system, e.g. EPSG:4326.
 #'
@@ -35,7 +35,7 @@ iso_grid = function(x, resolution = 9) {
 # But with sf:: before the st_* functions
 
 #' Generate voronoi polygons from a bounding box and points
-#' 
+#'
 #' @param points An sf object of points
 #' @param poly A polygon object
 #' @return An sf object of voronoi polygons
@@ -55,9 +55,9 @@ iso_vnoi = function(points, poly) {
 }
 
 #' Calculate voronoi-style polygons based on grid with Euclidean distances
-#' 
+#'
 #' @note The function groups by the first column in the points object which should be unique (e.g. OSM ID).
-#' 
+#'
 #' @param points An sf object of points
 #' @param grid An sf object of a grid
 #' @export
@@ -87,7 +87,7 @@ iso_join = function(points, grid) {
 # Code to inform the function:
 
 # ```{r}
-# net_nodes = net |> 
+# net_nodes = net |>
 #   activate("nodes") |>
 #   st_as_sf()
 # point_ids = nngeo::st_nn(
@@ -109,8 +109,8 @@ iso_join = function(points, grid) {
 # )
 # class(paths_all)
 # routes_list = lapply(seq(nrow(paths_all)), function(i) {
-#   net |> 
-#     activate("edges") |> 
+#   net |>
+#     activate("edges") |>
 #     slice(paths_all$edge_paths[[i]]) |>
 #     mutate(route_number = i) |>
 #     sf::st_as_sf()
@@ -142,27 +142,27 @@ iso_join = function(points, grid) {
 #   filter(group_components() == 1)
 # with_graph(net, graph_component_count())
 
-# net_sf = net |> 
-#   sfnetworks::activate("edges") |> 
-#   sf::st_as_sf() |> 
+# net_sf = net |>
+#   sfnetworks::activate("edges") |>
+#   sf::st_as_sf() |>
 #   dplyr::select(from, to, weight)
 # nrow(net_sf)
 # nrow(walking_network)
 # tm_shape(walking_network) + tm_lines("grey", lwd = 5) +
-#   tm_shape(net_sf) + tm_lines("blue", lwd = 2) 
+#   tm_shape(net_sf) + tm_lines("blue", lwd = 2)
 # ```
 
 # We'll start by calculating routes from the first `hex_boundary` cell to the nearest point.
 
 # ```{r}
-# net_nodes = net |> 
+# net_nodes = net |>
 #   activate("nodes") |>
 #   st_as_sf()
 # from_point = hex_joined_centroids[1, ]
 # to_point = points[1, ]
 # path = sfnetworks::st_network_paths(net, from_point, to_point)
-# path_sf = net |> 
-#   activate("edges") |> 
+# path_sf = net |>
+#   activate("edges") |>
 #   slice(path$edge_paths[[1]]) |>
 #   sf::st_as_sf()
 
@@ -208,16 +208,16 @@ iso_join = function(points, grid) {
 #   to = nearest_points,
 #   weights = "weight"
 # )
-# path_1 = net |> 
-#   activate("edges") |> 
+# path_1 = net |>
+#   activate("edges") |>
 #   slice(paths$edge_paths[[1]]) |>
 #   mutate(route_number = 1) |>
 #   sf::st_as_sf()
 # sum(path_1$weight)
 
 # path_weights = sapply(seq(nrow(paths)), function(i) {
-#   net |> 
-#     activate("edges") |> 
+#   net |>
+#     activate("edges") |>
 #     slice(paths$edge_paths[[i]]) |>
 #     mutate(route_number = i) |>
 #     sf::st_as_sf() |>
@@ -238,7 +238,7 @@ iso_join = function(points, grid) {
 # ```{r}
 # which_hex = which(lengths(st_intersects(hex_joined, first_boundary_point)) > 0)
 # hex_iso = hex_joined
-# hex_iso$name[which_hex] 
+# hex_iso$name[which_hex]
 # hex_iso$name[which_hex] = cell_value_new
 # m1 = tm_shape(hex_joined) + tm_polygons(col = "name")
 # m2 = tm_shape(hex_iso) + tm_polygons(col = "name")
@@ -264,8 +264,8 @@ iso_join = function(points, grid) {
 #     weights = "weight"
 #   )
 #   path_weights = sapply(seq(nrow(paths)), function(i) {
-#     net |> 
-#       activate("edges") |> 
+#     net |>
+#       activate("edges") |>
 #       slice(paths$edge_paths[[i]]) |>
 #       mutate(route_number = i) |>
 #       sf::st_as_sf() |>
@@ -281,7 +281,7 @@ iso_join = function(points, grid) {
 # }
 
 #' Calculate voronoi-style polygons based on network distance/time with sfnetworks
-#' 
+#'
 #' @param net An sfnetworks object representing a travel network
 #' @param n The number of nearest points to calculate routes to
 #' @inheritParams iso_vgrid
@@ -296,12 +296,12 @@ iso_sfn = function(points, net, grid, n = 3) {
 
   # # Prepare data
   # TODO: separate out as separate cleaning function?
-  net = net |> 
-    sfnetworks::activate("edges") |> 
-    dplyr::mutate(weight = sfnetworks::edge_length()) |> 
-    sfnetworks::activate("nodes") |> 
+  net = net |>
+    sfnetworks::activate("edges") |>
+    dplyr::mutate(weight = sfnetworks::edge_length()) |>
+    sfnetworks::activate("nodes") |>
     dplyr::filter(tidygraph::group_components() == 1)
-  net_nodes = net |> 
+  net_nodes = net |>
     sfnetworks::activate("nodes") |>
     sf::st_as_sf()
 
@@ -329,15 +329,15 @@ iso_sfn = function(points, net, grid, n = 3) {
       weights = "weight"
     )
     path_weights = sapply(seq(nrow(paths)), function(j) {
-      net |> 
-        sfnetworks::activate("edges") |> 
+      net |>
+        sfnetworks::activate("edges") |>
         dplyr::slice(paths$edge_paths[[j]]) |>
         dplyr::mutate(route_number = j) |>
         sf::st_as_sf() |>
         dplyr::summarise(length = sum(weight)) |>
         dplyr::pull(length)
     })
-    point_shortest_id = which.min(path_weights)
+    point_shortest_id = nearest_point_ids[which.min(path_weights)]
     point_shortest = points[point_shortest_id, ]
     cell_value_original = grid_point_i[[1]]
     cell_value_new = point_shortest[[1]]
