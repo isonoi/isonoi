@@ -15,7 +15,7 @@ Depends:
     R (>= 2.10)
 Imports: 
     dplyr,
-    h3o,
+    h3o (>= 0.2.2),
     nngeo,
     rmapshaper,
     sf,
