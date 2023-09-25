@@ -19,7 +19,7 @@ iso_osrm(
 
 \item{measure}{passed on to osrm::osrmTable, can be either "duration" (minutes) or "distance" (meters)}
 
-\item{osrm.server}{the base URL of the routing server (end with "/")}
+\item{osrm.server}{the base URL of the routing server (end with "/"!)}
 
 \item{osrm.profile}{the routing profile to use}
 }
@@ -39,8 +39,7 @@ i.e., getOption("osrm.server") and getOption("osrm.profile")
 \examples{
 points = points_oldenburg
 x = sf::st_as_sf(iso_grid(net_oldenburg_raw, resolution = 10))
-options(osrm.server = "http://0.0.0.0:5000/")
-options(osrm.profile = "car")
-#grid = isonoi::iso_osrm(x, points, measure = "duration")
-#plot(grid)
+grid = isonoi::iso_osrm(x, points, measure = "duration",
+osrm.server = "http://router.project-osrm.org/", osrm.profile = "car")
+plot(grid)
 }
