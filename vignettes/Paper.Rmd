@@ -1,0 +1,47 @@
+---
+title: "Isonoi - Calculate voronoi-style polygons based on route distances / durations"
+runningtitle: "Isonoi"
+output: rmarkdown::html_vignette
+author:
+   - name: Robin Lovelace
+     affiliation: Institute for Transport Studies and Leeds Institute for Data Analytics, University of Leeds, UK
+   - name: Bernhard C. Dannemann
+     affiliation: Chair of Applied Macroeconomics, University of Oldenburg, DEU
+vignette: >
+  %\VignetteIndexEntry{Isonoi - Calculate voronoi-style polygons based on route distances / durations}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+pkgdown:
+  as_is: true
+  set_null_theme: false
+keywords: "isochrones, voronoi polygons, tesselation, modifiable area unit problem"
+bibliography: references.bib
+# csl: josis.csl
+abstract: |
+  We calculate voronoi-style polygons based on route distances / durations using
+  Openstreetmap road network data.
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+#library(isonoi)
+```
+
+
+# Introduction
+
+# Partitioning the plane into isochrones
+
+- In urban planning, voronoi polygons are employed, for example, for assessing freight loading zones [@su11051276]
+
+# Applications
+
+# Discussion and Conclusion
+
+# References
