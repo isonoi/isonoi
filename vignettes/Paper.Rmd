@@ -36,11 +36,22 @@ knitr::opts_chunk$set(
 
 # Introduction
 
-# Partitioning the plane into isochrones
-
 - In urban planning, voronoi polygons are employed, for example, for assessing freight loading zones [@su11051276]
 
+
+
+# Partitioning the plane into isochrones
+
+- Conceptual differences:
+  - Voronoi uses a distance metric (usually L2 or L1), which is not available for road networks (routing engine as a *black box*)
+  - While voronoi polygons extend into *empty space*, isochrones form a convex hull around points that can be reached, given a time constraint, within the road network
+
 # Applications
+- Accessibility maps of hospitals
+- Market regions of firms
+- Transport planning
+- Catchment areas of pubs 
+- For city centers: Isonoi vs. clockboard zones!
 
 # Discussion and Conclusion
 
