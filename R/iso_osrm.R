@@ -21,16 +21,16 @@
 #' grid = isonoi::iso_osrm(x, points, measure = "duration",
 #' osrm.server = "http://router.project-osrm.org/", osrm.profile = "car")
 #' plot(grid)
-iso_osrm <- function(x,
+iso_osrm = function(x,
                      points,
                      measure = "duration",
                      osrm.server = getOption("osrm.server"),
                      osrm.profile = getOption("osrm.profile")) {
 
-  grid_centroids <- sf::st_centroid(x)
+  grid_centroids = sf::st_centroid(x)
 
-  osrm_result <- lapply(1:nrow(points), function(i) {
-    osrm_request <- osrm::osrmTable(src = points[i,],
+  osrm_result = lapply(1:nrow(points), function(i) {
+    osrm_request = osrm::osrmTable(src = points[i,],
                                     dst = grid_centroids,
                                     measure = measure,
                                     osrm.server = osrm.server,
@@ -43,19 +43,20 @@ iso_osrm <- function(x,
     }
   })
 
-  matrix <- do.call(rbind, osrm_result) |>
-    t() |>
-    tibble::as_tibble(.name_repair = "unique") |>
-    dplyr::rowwise() |>
-    dplyr::mutate(
-      index_min = which.min(dplyr::c_across(dplyr::everything())),
-      osrm_measure = measure,
-      osrm_profile = osrm.profile
+  matrix = do.call(rbind, osrm_result) |>
+    t()
+
+  index = apply(matrix, 1, which.min) |>
+    as.numeric()
+
+  out = x |>
+    dplyr::bind_cols(
+      points |>
+        sf::st_drop_geometry() |>
+        dplyr::slice(
+          index
+        )
     )
 
-  x <- dplyr::bind_cols(x, matrix |>
-                               dplyr::select(index_min,
-                                             osrm_measure,
-                                             osrm_profile))
-  x
+  out
 }
