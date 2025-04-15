@@ -45,11 +45,13 @@ The 3 figures below show outputs from the packages next to the standard voronoi 
 ```{r outputs}
 library(tmap)
 poly = sf::st_convex_hull(sf::st_union(x))
-vnoi = iso_vnoi(points, poly) # TODO
+vnoi = iso_vnoi(points, poly)
 vgrid = iso_vgrid(points, grid)
+net = sfnetworks::as_sfnetwork(x)
+vsfn = iso_sfn(points, net, grid)
 m1 = tm_shape(vnoi) + tm_fill("name")
 m2 = tm_shape(vgrid) + tm_fill("name")
-# m3 = iso_osrm(x) # TODO
-tmap_arrange(m1, m2, m2, nrow = 1)
+m3 = tm_shape(vsfn) + tm_fill("name")
+tmap_arrange(m1, m2, m3, nrow = 1)
 ```
 

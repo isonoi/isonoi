@@ -2,6 +2,7 @@
 
 export(iso_grid)
 export(iso_osrm)
+export(iso_sfn)
 export(iso_vgrid)
 export(iso_vnoi)
 importFrom(rlang,.data)

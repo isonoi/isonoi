@@ -17,10 +17,13 @@ Imports:
     dplyr,
     h3o (>= 0.2.2),
     nngeo,
-    sf,
     osrm,
     tibble,
     rlang
+    rmapshaper,
+    sf,
+    sfnetworks,
+    tidygraph
 Suggests: 
     knitr,
     rmarkdown
