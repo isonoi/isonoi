@@ -19,7 +19,7 @@ Imports:
     nngeo,
     osrm,
     tibble,
-    rlang
+    rlang,
     rmapshaper,
     sf,
     sfnetworks,
